@@ -10,20 +10,69 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  // Lista widoków do przełączania
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Nasze samochody',
+      style: optionStyle,
+    ),
+    Text(
+      'Rezerwacja',
+      style: optionStyle,
+    ),
+    Text(
+      'Oferta',
+      style: optionStyle,
+    ),
+    Text(
+      'Profil',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Car Rental'),
+      ),
       body: Center(
-        child: ElevatedButton(
-          child: Text("Logout"),
-          onPressed: () {
-            FirebaseAuth.instance.signOut().then((value) {
-              print("Signed Out");
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignInScreen()));
-            });
-          },
-        ),
+        // Wyświetlanie odpowiedniego widgetu w zależności od wybranej ikony
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.directions_car),
+            label: 'Samochody',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book_online),
+            label: 'Rezerwacja',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.campaign),
+            label: 'Oferta',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }

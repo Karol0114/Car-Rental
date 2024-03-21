@@ -28,7 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/autodok_logo.png"),
+                logoWidget("assets/images/autodok_logo_round.png"),
                 const SizedBox(
                   height: 30,
                 ),
