@@ -1,122 +1,285 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="pl">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="theme-color" content="#CE0002">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="author" content="AutoDOK">
-<link href="./style/style.css" rel="stylesheet">
-<meta name="description" content="Wypożyczalnia samochodów AutoDOK oferuje szeroką gamę dostępnych pojazdów oraz atrakcyjne ceny!">
-<meta name="keywords" content="autoDOK, car rent, wypożyczalnia, wynajem, pojazdy, samochody, cars">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>AutoDOK wypożyczalnia pojazdów</title>
+	
+	<link rel="shortcut icon" href="../grafika/favicon/favicon_round.ico">
+	<link href="https://fonts.googleapis.com/css?family=Aldrich|Bangers|Bebas+Neue|Black+Ops+One|Changa|Concert+One|Fredoka+One|Indie+Flower|Lacquer|Neucha|Odibee+Sans|Permanent+Marker|Raleway|Righteous|Squada+One|Teko|Trade+Winds|Yeon+Sung|ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/css/fontello.css" type="text/css" >
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/style.css">
 
-<title>Wypożyczalnia samochodów AutoDOK</title>
 
-<link rel="shortcut icon" href="../grafika/favicon/favicon.ico">
-<meta name="csrf-token" content="llsSwgQHIdD52qn8LfHV72AxZUfu81IRsaUqa8TN">
-<script type="text/javascript" async="" src="./js/js"></script>
-<script type="text/javascript" async="" src="./js/analytics.js.pobrane"></script>
-<script type="text/javascript" async="" src="./js/js(1)"></script>
-<script type="text/javascript" async="" src="./js/recaptcha__pl.js.pobrane" crossorigin="anonymous" integrity="sha384-miGMqQSAvrnJdzKaN2p6bHqrfXmNrFZj8xHVKcB28IQ99aBHoQdboS+ytgDkak0S"></script>
-<script async="" src="./js/gtm.js.pobrane"></script>
-<script type="text/javascript">var variants = []; var jsonIcons = {}; </script>
-
-<script type="text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
- new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
- j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
- 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
- })(window,document,'script','dataLayer','GTM-P7NCKXX');</script>
- 
 </head>
-<body class="eupopup eupopup-bottom / homepage " style="overflow-y: auto;"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7NCKXX"
- height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<div id="app-cart"><div class="mainMenu"><ul id="accordion_menu" class="accordion text-center">
-<li class="nav-item mr-2 "><a href="./oferta.html" title="Oferta" type="button" data-toggle="collapse" data-target="#collapse0" aria-expanded="true" aria-controls="collapse0" class="dropdown-toggle ">Oferta</a>
-<ul id="collapse0" aria-labelledby="headingOne" data-parent="#accordion_menu" class="collapse">
-<li><a href="./oferta.html" title="Pełna oferta" class="nav-link ">Pełna oferta</a></li>
-<li><a href="./osobowe.html" title="Samochody osobowe" class="nav-link ">Samochody osobowe</a></li>
-<li><a href="./dostwcze" title="Samochody dostawcze" class="nav-link">Samochody dostawcze</a></li>
-<li><a href="./busy" title="Busy osobowe" class="nav-link ">Busy osobowe</a></li>
-</ul></li>
-<li class="nav-item mr-2 "><a href="./jak_wynajac.html" title="Jak wynająć" class="">Jak wynająć</a></li>
-<li class="nav-item mr-2 "><a href="./promocje.html" title="Promocje" class="">Promocje</a></li>
-<li class="nav-item mr-2 "><a href="./onas.html" title="O nas" class="">O nas</a></li>
-<li class="nav-item mr-2 "><a href="./kontakt.html" title="Kontakt" class="">Kontakt</a></li>
-</ul></div>
+<body onload="preloader()">
+<div id="preloader"><img id="prelogo" src="../grafika/autodok_logo_round.png" alt="AutoDOK" ></div>
 
 
-<main id="all"><div id="headroom" style="height: 84px;"><div class="headroom--top headroom--not-bottom headroom" style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 9999; transform: translate3d(0px, 0px, 0px); transition: all 250ms ease-in-out 0s;"><header id="header" class="d-flex flex-md-row align-items-center px-md-4 w-100">
-<div class="container d-flex position-relative"><div class="my-0 mr-md-auto font-weight-normal">
-<div class="d-block d-lg-none"><i class="menuBtn"><span class="lines"></span></i></div>
-
-<a href="./index.html" class="navbar-brand"><img src="../grafika/autodok_logo.png" class="brand-img"></a></div>
-<div class="menu-desk d-flex align-items-center"><div class="justify-content-between d-lg-flex d-none">
-
-<nav>
-<ul class="nav d-flex">
-<li class="nav-item mr-2">
-<a href="./oferta.html" title="Oferta" data-toggle="dropdown" class="nav-linkdropdown-toggle ">Oferta</a>
-<ul aria-labelledby="snavbarDropdownMenuLink" class="dropdown-menu">
-	<li><a href="./oferta.html" title="Pełna oferta" class="nav-link ">Pełna oferta</a></li>
-	<li><a href="./osobowe" title="Samochody osobowe" class="nav-link">Samochody osobowe</a></li>
-	<li><a href="./dostawcze" title="Samochody dostawcze" class="nav-link ">Samochody dostawcze</a></li>
-	<li><a href="./busy" title="Busy osobowe" class="nav-link ">Busy osobowe</a></li>
-	</ul></li>
 
 
-	<li class="nav-item mr-2"><a href="./jak_wynajac.html" title="Jak wynająć" class="nav-link">Jak wynająć</a></li>
-	<li class="nav-item mr-2"><a href="./promocje.html" title="Promocje" class="nav-link">Promocje</a></li> 
-	<li class="nav-item mr-2"><a href="./onas.html" title="O nas" class="nav-link">O nas</a></li>
-<li class="nav-item mr-2"><a href="./kontakt" title="Kontakt" class="nav-linkfalse">Kontakt</a></li>
-</ul>
-</nav>
-</div></div></div>
-</header>
-</div></div>
 
 
-</div></div></div>
-<div class="position-relative mb-5"><div class="container"><div class="heading_title"><p><small>NAJCZĘŚCIEJ WYBIERANE</small></p>
-<h1 class="text-center mt-3">Wypożyczalnia samochodów</h1></div>
-<div class="d-flex flex-column justify-content-center">
-<ul id="myTab" role="tablist" class="d-flex flex-wrap justify-content-center nav mb-3">
-	<li role="presentation" class="nav-item mb-2">
-	<a id="samochody-osobowe-tab" data-toggle="tab" href="./osobowe.html" role="tab" aria-controls="samochody-osobowe" aria-selected="true" class="not-scroll button button--white custom_border mr-3 active ">Samochody osobowe</a></li>
-	<li role="presentation" class="nav-item mb-2">
-	<a id="samochody-dostawcze-tab" data-toggle="tab" href="./dostawcze.html" role="tab" aria-controls="samochody-dostawcze" aria-selected="true" class="not-scroll button button--white custom_border mr-3 ">Samochody dostawcze</a></li>
-	<li role="presentation" class="nav-item mb-2">
-	<a id="busy-osobowe-tab" data-toggle="tab" href="./busy.html" role="tab" aria-controls="busy-osobowe" aria-selected="true" class="not-scroll button button--white custom_border mr-3 ">Busy osobowe</a>
+<header>
+
+	<nav class="navbar navbar-dark navbar-expand-lg">
+	<a class="navbar-brand" href="#"><img class="logo" src="../grafika/autodok_logo_round.png" alt="AutoDOK" ></a>
+	
+	<div class="icons" align="center">
+	Znajdź nas na:<br>
+	
+			<!--Odnośmik fanpage--><a id="blink" href="" target="blank" title="Fanpage" onclick="alert('Tutaj miał być fanpage :)');"> <i class="icon-facebook-official"></i></a>
+			<!--Odnośmik Kanał YT--><a id="blink" href="" target="blank" title="Kanał YouTube"  onclick="alert('Tutaj miał być JUTUB :)');"><i class="icon-youtube"></i></a>
+			<!--Odnośmik Instagram--><a id="blink" href="" target="blank" title="Instagram"  onclick="alert('Tutaj miał być instagram :)');"><i class="icon-instagram"></i></a>
+			<!--Spotify --><a id="blink" href="" target="blank" title="Spotify"  onclick="alert('Tutaj miał być blog :)');"><i class="icon-spotify"></i></a>
+	
+	</div>
+	
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="switch">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="menu">
+		<ul class="navbar-nav ml-auto mr-md-5">
+		<li class="nav-item"><a class="nav-link" href="#media">Oferta</a></li>
+		<li class="nav-item"><a class="nav-link" href="#about">Jak wynająć?</a></li>
+		<li class="nav-item"><a class="nav-link" href="#koncerty">Promocje</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">O nas</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="flase" id="submenu" aria-haspopup="true">Do pobrania</a>
+	<div class="dropdown-menu " aria-labelledby="submenu" >
+	<a class="dropdown-item" href="sample.pdf">WARUNKI NAJMU</a>
+	<a class="dropdown-item" href="sample1.png">REGUALMIN PROMOCJI</a>
+	<a class="dropdown-item" href="sample2.png">PEŁNOMOCNICTWO</a>
+	<a class="dropdown-item" href="sample3.jpg">UMOWA WSTĘPNA</a>
+	</div>
 	</li>
-	</ul>
-<div id="myTabContent" class="tab-content products_home w-100"><div id="samochody-osobowe" role="tabpanel" aria-labelledby="samochody-osobowe-tab" class="tab-pane w-100 fade show active "><div class="row"><div class="mb-4 col-6 col-lg-12 cat_box">
-<div class="card d-flex flex-column flex-lg-row h-100"><a href="#" title="Toyota C-HR" class="relative"><div class="product-labels"></div> <div class="photo">
-<img src="./..." alt="" class="img-fluid w-100"></div></a> 
-<div class="card-body py-lg-0 my-2"><div class="h-100 d-flex justify-content-between flex-column flex-lg-row mw-100 w-100"><div class="content_info">
-<div class="text-left mb-2 min_mobile"><a href="#" title="Toyota C-HR" class="name_height">
-Toyota C-HR
-</a></div>
-<ul class="mb-2 d-flex flex-column flex-lg-row">
-<div class="mr-2">
-<svg data-toggle="tooltip" data-placement="right" data-original-title="Liczba miejsc" class="c2 s24"><use xlink:href="#seats"></use></svg>5</div> <div class="mr-2"><svg data-toggle="tooltip" data-placement="right" data-original-title="Silnik" class="c2 s24"><use xlink:href="#engine"></use></svg>benzyna</div> <div><svg data-toggle="tooltip" data-placement="right" data-original-title="Średnie spalanie" class="c2 s24"><use xlink:href="#fuel"></use></svg>6.8 l/100 km</div></ul> <div class="d-none d-md-block"> Toyota C-HR posiada niepowtarzalny, drapieżny wygląd. Miejscami można zauważ...</div></div>
+	<li class="nav-item"><a class="nav-link" href="#">NASZE POJAZDY</a></li>
+		</ul>
+	</div>
+	</nav>
+</header>
+	
+	
+<section>
 
- 
-<footer class="content-info py-5">
-<div class="container">
-<div class="row">
-<div class="col-12 copyright">
-<p> AutoDOK © 2024</p>
+<div id="background">
+<img src="../grafika/autodok_baner2.png">
+</div>
+
+<div id="media">
+<div id="left">
+
+
+<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61557221683378&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FPodNapieciem16%2F&tabs=timeline&width=250&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="250" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="min"></iframe>
+</div>
+<div id="right">
+
+	<iframe src="https://open.spotify.com/embed/album/6zXh7c7TGHr76q31nxtHHn" height="500"width="210" frameborder="0" allowtransparency="true" allow="encrypted-media"class="min"></iframe>
+	<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/62Qt7Q0MfjSXXrfA11ler3?utm_source=generator" width="100%" height="500" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+</div>
+<div id="about">
+<h1 class="reveal">O nas</h1>
+				<span class="reveal">AutoDOK to wypożyczalnia pojazdów, która zapewnia klientom szeroki wybór pojazdów najwyższej jakości, idealnych do zaspokojenia wszelkich potrzeb podróżnych czy biznesowych. Nasza firma działa z myślą o komforcie i satysfakcji klienta, oferując profesjonalną obsługę oraz konkurencyjne ceny.
+
+				Nasz flota pojazdów obejmuje różnorodne modele, takie jak samochody osobowe, SUV-y, vany oraz minibusy, które są regularnie serwisowane i utrzymywane w doskonałym stanie technicznym. Dzięki temu nasi klienci mogą być pewni, że podróżują bezpiecznie i komfortowo.
+
+				AutoDOK dba również o indywidualne potrzeby klientów, dlatego oferujemy elastyczne opcje wynajmu, dostosowane do różnych okoliczności i preferencji. Bez względu na to, czy potrzebujesz krótkoterminowego wynajmu na weekendową wycieczkę, czy długoterminowego kontraktu na podróż służbową, jesteśmy gotowi zapewnić Ci odpowiedni pojazd.
+
+				Nasza wypożyczalnia kładzie duży nacisk na wygodę klientów, dlatego oferujemy możliwość rezerwacji online oraz dostawę pojazdu pod wskazany adres. Ponadto, nasz przyjazny personel jest zawsze gotowy udzielić pomocy i doradzić w wyborze odpowiedniego pojazdu, zapewniając kompleksową obsługę na każdym etapie wynajmu.
+
+				AutoDOK to nie tylko miejsce, gdzie wynajmujesz pojazd - to partner, który zapewni Ci niezapomniane doświadczenie podróżowania, dbając o każdy detal, abyś mógł skupić się na tym, co naprawdę ważne podczas podróży.<br>
+				<p><b><u class="reveal">Z nami dojedziesz na koniec świata!!!! </u></b></p></p></span>
+<div id="sklad">
+<h1 style="margin-bottom:30px;"class="reveal">Nasze perełki!</h1>
+<div id="kacper" class="kafelka">
+<img id="img1" src="../grafika/cars/maluch.jpg">
+<div class="opis" id="opis1">
+<b></br>Fiat 126p<br>
+650 ccm | 24 KM</b>
+				<p>
+				Jeżdżąca Legenda polskich dróg wiejskich!
+				</p>
+				<a class="clink" href="" target="blank" title="maluch"> <i class="icon-basket"></i></a>
+				<a class="clink" href="" target="blank" title="maluch" ><i class="icon-cab"></i></a>
+</div>
+</div>
+
+<div id="wojtek" class="kafelka">
+<img id="img2" src="../grafika/cars/lanos.jpg">
+<div class="opis" id="opis2">
+<b></br>Daewoo Lanos<br>
+1498 ccm | 100 KM</b>
+				<p>
+				Idelany egzemplarz na droig rodem z epoki kamienia łupanego.
+				</p>
+				<a class="clink" href="" target="blank" title="lanos"> <i class="icon-cab"></i></a>
+				<a class="clink" href="" target="blank" title="lanos" ><i class="icon-mail"></i></a>
+</div>
+</div>
+
+<div id="dawid" class="kafelka">
+<img id="img3" src="../grafika/cars/multipla.jpg">
+<div class="opis" id="opis3">
+<b></br>Fiat Multipla<br>
+1910 ccm | 120 KM</b>
+				<p>
+				Jedyny plus tego samocohodu jest na akumulatorze!
+				</p>
+				<a class="clink" href="" target="blank" title="multipla"> <i class="icon-gplus"></i></a>
+				<a class="clink" href="" target="blank" title="multipla" ><i class="icon-tag"></i></a>
+</div>
+</div>
+
+<div id="kamil" class="kafelka">
+<img id="img4" src="../grafika/cars/polonez.jpg">
+<div class="opis" id="opis4">
+<b></br>Polonez Caro<br>
+1598 ccm | 76 KM</b>
+				<p>
+				Niesłychane przyspieszenie... 13 minut do setki...
+				</p>
+				<a class="clink" href="" target="blank" title="polonez"> <i class="icon-google"></i></a>
+				<a class="clink" href="" target="blank" title="polonez" ><i class="icon-instagram"></i></a>
+</div>
+</div>
+
+<div id="maciek" class="kafelka">
+<img id="img5" src="../grafika/cars/garbus.jpg">
+<div class="opis" id="opis5">
+<b></br>Volkswagen 1303<br>
+1285 ccm | 44 KM</b>
+				<p>
+				Samochód dla ludu... Od samego Ferdynanda Porsche...
+				</p>
+				<a class="clink" href="" target="blank" title="garbus"> <i class="icon-facebook-official"></i></a>
+				<a class="clink" href="htt" target="blank" title="garbus" ><i class="icon-instagram"></i></a>
 </div>
 </div>
 </div>
-</footer>
+</div>
 
 
-<!--<script src="./js/jquery.min.js.pobrane" rel="preload" type="text/javascript"></script>
-<script src="./js/jquery-migrate-1.4.1.min.js.pobrane" rel="preload" type="text/javascript"></script>
-<script src="./js/app.js.pobrane" rel="preload" type="text/javascript"></script>
-<script src="./js/bootstrap.bundle.min.js.pobrane" rel="preload" type="text/javascript"></script>
-<script async="" src="./js/api.js.pobrane" type="text/javascript"></script>
--->
+<div id="video">
+<iframe class="reveal" src="https://www.youtube.com/embed/ejqBMXrMNKg?si=NOZsvJ1gQJq4ZvUF&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="reveal" src="https://www.youtube.com/embed/bxi0Ljdq8og?si=fDbUiY-IbXYk7OIe&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe class="reveal" src="https://www.youtube.com/embed/cs9SixZ43pQ?si=BecdyJ6g1Qy4r6qm&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<div id="koncerty">
+<h3><u>Jak wynająć:</u></h3>
+
+
+<div id="maps">
+<center>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.05821214948!2d18.86422041573163!3d50.458640679476346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a191ce1dbd3%3A0xbec256751f48b4aa!2sKlub%2022!5e0!3m2!1spl!2spl!4v1575743211849!5m2!1spl!2spl" class="k22" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.9996943336632!2d18.921331115727714!3d50.347911079461404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716d3256ff86635%3A0x5c50993fa1483e9e!2sPub%20Gotyk!5e0!3m2!1spl!2spl!4v1575744981893!5m2!1spl!2spl" class="gotyk"  frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.884446950087!2d18.857290315731113!3d50.44325297947442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a2e36ac7ff9%3A0x9b1d6ce24d9186bb!2zSW5ueSDFmmzEhXNrLiBHYWxlcmlhIHN6dHVraSB3c3DDs8WCY3plc25lag!5e0!3m2!1spl!2spl!4v1575745091560!5m2!1spl!2spl" class="galeria"  frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.8237829022664!2d18.85091031554691!3d50.444382895683376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a29290d2651%3A0x5d0973c489ece365!2zRG9tw7N3a2E!5e0!3m2!1spl!2spl!4v1575745142242!5m2!1spl!2spl" class="domowka" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.6145010613445!2d18.857813915547016!3d50.44828079540254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a25af343b4d%3A0x608f917200527f29!2sPub%20Piekarnia%20Piwa!5e0!3m2!1spl!2spl!4v1575745183075!5m2!1spl!2spl" class="piekarniapiwa" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2547.808076518619!2d18.853971415542397!3d50.314173605056226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112d5c377ceb57%3A0xb48e1d608928c9b6!2sEX%20PUB!5e0!3m2!1spl!2spl!4v1575745229028!5m2!1spl!2spl" class="expub" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14319.30888014922!2d18.75772191636731!3d50.62117007230702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710db087597c8bd%3A0xb6b8e67e29c94ba4!2s42-286%20Pi%C5%82ka!5e0!3m2!1spl!2spl!4v1582578126751!5m2!1spl!2spl" class="pilka" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.942035427624!2d18.923278015543616!3d50.34898650255211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716d3254eeb1341%3A0x9e96b38e5bc0a514!2splac%20Sobieskiego%2C%2041-902%20Bytom!5e0!3m2!1spl!2spl!4v1582578153373!5m2!1spl!2spl" class="bytom" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.830366089146!2d18.851180915577313!3d50.44426027947458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a292b8ad81b%3A0xebb82f42dfc0bba5!2sMinisterstwo%20%C5%9Aledzia%20i%20W%C3%B3dki!5e0!3m2!1spl!2spl!4v1582663971122!5m2!1spl!2spl" class="mini" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224.57894412739302!2d18.85303136654218!3d50.44444015154652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112ba6d0ad9677%3A0x65352c728530c98b!2sPiekarnia%20Piwa!5e0!3m2!1spl!2spl!4v1582664062537!5m2!1spl!2spl"class="piekarnianew" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40631.42178734475!2d18.82990800659407!3d50.46970768283089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a2f6e26692f%3A0x37dd8006f63dc77a!2sTarnog%C3%B3rskie%20Centrum%20Kultury!5e0!3m2!1spl!2spl!4v1584998490185!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="tck"></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40631.43081691604!2d18.829907979604723!3d50.46969717531591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a1e3f409f47%3A0x34f20236d58993bd!2sZesp%C3%B3%C5%82%20Szkolno%20-%20Przedszkolny%20nr%201!5e0!3m2!1spl!2spl!4v1584998656460!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="SP6"></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d162526.0302966614!2d18.724844132636786!3d50.46960785451648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a24596b5a23%3A0xf2092868c8f99ae5!2zWmVzcMOzxYIgU3prw7PFgiBUZWNobmljem55Y2ggaSBPZ8OzbG5va3N6dGHFgmPEhWN5Y2g!5e0!3m2!1spl!2spl!4v1584998763655!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="ZSTiO"></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325297.3422697713!2d18.469171805433337!3d50.43392001519328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4710dbac03f05c63%3A0xda7e373fbb7a0b2a!2sKawiarnia%20Pa%C5%82acowa!5e0!3m2!1spl!2spl!4v1584998955062!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="gama"></iframe>
+			
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d325301.9649751114!2d18.46917007594365!3d50.43324724741591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112a2f213144d9%3A0x9598044dc2219f28!2sRynek%20w%20Tarnowskich%20G%C3%B3rach!5e0!3m2!1spl!2spl!4v1584998981706!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="rynek"></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10161.958586188925!2d18.917820239934226!3d50.45060612160425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x86bc8cbc41b986c2!2zTEtTICJQcnp5c3rFgm_Fm8SHIg!5e0!3m2!1spl!2spl!4v1584999081383!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"class="chechło"></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.5730048658133!2d17.920825515739487!3d50.67218807950652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47105300c258150b%3A0xdca4f131c740b5e2!2sMiejsce%20X!5e0!3m2!1spl!2spl!4v1589102547253!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="opole"></iframe>
+			
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.1727458996966!2d18.851978015728275!3d50.363333279463454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47112cf7da54e323%3A0x82ef06084b534fb8!2sStara%20Piekarnia!5e0!3m2!1spl!2spl!4v1589230804655!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="starapiekarnia"></iframe>
+			</center>
+		
+
+
+
+
+
+
+
+</div>
+</div>
+
+</section>	
+<div id="footer">
+AutoDOK || Official Website &copy 2024
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v8.0" nonce="3hXqlmb5"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="js/bootstrap.min.js"></script>
+		<script src="script.js"></script>
+	<script src="jquary.js"></script>
+	<script src="scrollreveal/dist/scrollreveal.min.js"></script>
+
+<script>
+    window.sr = ScrollReveal();
+    sr.reveal('.reveal', {
+        reset: true,
+        delay: 400,
+		duration: 2000
+    });
+	sr.reveal('#kacper', {
+       reset: true,
+       delay: 700,
+	   		duration: 2000
+   });
+   sr.reveal('#wojtek', {
+       reset: true,
+       delay: 900,
+	   		duration: 2000
+   });
+   sr.reveal('#dawid', {
+       reset: true,
+       delay: 1100,
+	   		duration: 2000
+   });
+   sr.reveal('#kamil', {
+       reset: true,
+       delay: 1300,
+	   		duration: 2000
+   });
+   sr.reveal('#maciek', {
+       reset: true,
+       delay: 1500,
+	   		duration: 2000
+   });
+</script>
+	
 </body>
-</html>
+</html>	

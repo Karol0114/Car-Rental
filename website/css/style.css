@@ -1,0 +1,49 @@
+*{margin:0;font-family:Raleway;}
+body{background-color:black;}
+.navbar{background-color:gray;border-top:1px solid white;border-bottom:1px solid white;color:white;position:fixed;width:100%;transition-timing-function:linear;transition-duration:200ms;transition-property:all;z-index:6;}
+	.navbar-brand{position:relative;left:15px;top:10%;}
+	.logo{height:100px;transition-timing-function:linear;transition-duration:200ms;transition-property:all;}
+.navbar-toggler{}
+#menu{margin-bottom:0px;}
+.icons{margin-left:15%;}
+#blink{text-decoration:none;color:white;font-size:26px;}
+					a:hover .icon-facebook-official{color:#8b9dc3;}
+					a:hover .icon-youtube{color:#c4302b;}
+					a:hover .icon-instagram{color:#60491b;}
+					a:hover .icon-spotify{color:#1db954;}
+					a:hover .icon-cab{color:#1db954;}
+					a:hover .icon-basket{color:#1db954;}
+#background{height:600px;border:1px solid white;width:100%;float:left;overflow:hidden;}
+#background img{width:100%;margin-top:100px;}
+#media{background-image:url(tloduze.png);background-size:100%;width:100%;float:left;border-bottom:1px solid white}
+nav.small img{height:50px;}
+
+#left {margin-left:2%;padding:10px;width:40%;float:left;text-align:center;}
+#right{width:40%;float:right;padding:10px;text-align:center;}
+.min{display:none;}
+.max{display:block;}
+@media (max-width: 800px){
+	#background{height:300px;}
+	#background img{margin-top:120px;}
+	.max{display:none;}
+	.min{display:block;}
+	}
+#about{background-color:#830000;color:white;text-align:center;width:100%;float:left;padding:15px;border-bottom:1px solid white;text-shadow: black 0.2em 0.2em 0.2em;}
+#sklad{width:100%;text-align:center;}
+.kafelka{width:16%;float:left;margin-left:3.2%;position:relative;border-radius:10px 10px 0 0;}
+.kafelka img{width:100%;border-radius:10px 10px 0 0;}
+.opis{display:none;position:absolute;left:0;bottom:0;width:120%;height:100%;background-color:rgba(0,0,0,0.5);padding:2px;border-radius:10px 10px 0 0;margin-left:-2.5%;}
+.clink{text-decoration:none;color:white;}
+#video{width:100%;float:left;background-image:url(tloduze.png);background-size:100%;text-align:center;border-bottom:1px solid white;}
+#video iframe{width:30%;height:300px;padding:10px;}
+#koncerty{width:100%;float:left;border-bottom:1px solid white;background-color:#830000;color:white;padding:10px;}
+#footer{background-color:black;width:100%;border-bottom:1px solid white;float:left;color:white;text-align:center;}
+
+#preloader{position:fixed;top:0;left:0;right:0;bottom:0;background:black;text-align:center;z-index:1000;vertical-align:middle; display: table-cell;  display: flex;
+  align-items: center;
+  justify-content: center}
+#prelogo{width:30%;}
+
+
+
+#maps iframe{display:none;width:70%;padding:10px;}
