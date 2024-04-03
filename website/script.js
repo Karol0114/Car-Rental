@@ -36,65 +36,65 @@ $(window).scroll(function(){
 
 $(document).ready(
 	function(){
-			$("#kacper").mouseenter(
+			$("#car1").mouseenter(
 		function(){	
 				$("#opis1").fadeIn(100);
 				$("#img1").animate({width:"120%", marginLeft:"-2.5%"},200);
 			},
 		);
-		$("#kacper").mouseleave(
+		$("#car1").mouseleave(
 		function(){	
 				$("#opis1").fadeOut(200);
 				$("#img1").animate({width:"100%", marginLeft:"1.5%"},200);
 			},
 		);
 		
-		$("#wojtek").mouseenter(
+		$("#car2").mouseenter(
 		function(){	
 				$("#opis2").fadeIn(200);
 				$("#img2").animate({width:"120%", marginLeft:"-2.5%"},200);
 			},
 		);
-		$("#wojtek").mouseleave(
+		$("#car2").mouseleave(
 		function(){	
 				$("#opis2").fadeOut(100);
 				$("#img2").animate({width:"100%", marginLeft:"1.5%"},200);
 			},
 		);
 		
-		$("#dawid").mouseenter(
+		$("#car3").mouseenter(
 		function(){	
 				$("#opis3").fadeIn(200);
 				$("#img3").animate({width:"120%", marginLeft:"-2.5%"},200);
 			},
 		);
-		$("#dawid").mouseleave(
+		$("#car3").mouseleave(
 		function(){	
 				$("#opis3").fadeOut(100);
 				$("#img3").animate({width:"100%", marginLeft:"1.5%"},200);
 			},
 		);
 		
-		$("#kamil").mouseenter(
+		$("#car4").mouseenter(
 		function(){	
 				$("#opis4").fadeIn(200);
 				$("#img4").animate({width:"120%", marginLeft:"-2.5%"},200);
 			},
 		);
-		$("#kamil").mouseleave(
+		$("#car4").mouseleave(
 		function(){	
 				$("#opis4").fadeOut(100);
 				$("#img4").animate({width:"100%", marginLeft:"1.5%"},200);
 			},
 		);
 		
-		$("#maciek").mouseenter(
+		$("#car5").mouseenter(
 		function(){	
 				$("#opis5").fadeIn(200);
 				$("#img5").animate({width:"120%", marginLeft:"-2.5%"},200);
 			},
 		);
-		$("#maciek").mouseleave(
+		$("#car5").mouseleave(
 		function(){	
 				$("#opis5").fadeOut(100);
 				$("#img5").animate({width:"100%", marginLeft:"1.5%"},200);
