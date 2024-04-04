@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileapp_car_rental/auth_screen/signin_page.dart';
 import 'package:mobileapp_car_rental/reservation_page.dart';
+import 'package:mobileapp_car_rental/profile_page.dart';
+import 'package:mobileapp_car_rental/offer_page.dart';
+import 'package:mobileapp_car_rental/auth_screen/custom_bottom_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,6 +28,20 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => ReservationPage()),
+      );
+    }
+
+    if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => OfferPage()),
+      );
+    }
+
+    if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfilePage()),
       );
     }
   }
@@ -128,29 +145,11 @@ Widget build(BuildContext context) {
         ),
       ],
     ),
-    bottomNavigationBar: BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.directions_car),
-          label: 'Samochody',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.book_online),
-          label: 'Rezerwacja',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.campaign),
-          label: 'Oferta',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profil',
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber[800],
-      onTap: _onItemTapped,
-    ),
+    
+    bottomNavigationBar: CustomBottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
   );
 }
 }

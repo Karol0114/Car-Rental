@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:mobileapp_car_rental/offer_page.dart';
+import 'package:mobileapp_car_rental/profile_page.dart';
+import 'package:mobileapp_car_rental/auth_screen/custom_bottom_nav_bar.dart';
+import 'package:mobileapp_car_rental/auth_screen/home_page.dart';
 
 class ReservationPage extends StatefulWidget {
   @override
@@ -7,6 +11,7 @@ class ReservationPage extends StatefulWidget {
 }
 
 class _ReservationPageState extends State<ReservationPage> {
+  int _selectedIndex = 1;
   DateTime? _selectedDay;
   DateTime? _startDay;
   DateTime? _endDay;
@@ -44,6 +49,38 @@ class _ReservationPageState extends State<ReservationPage> {
       _endDayController.text = _endDay != null ? '${_endDay!.toLocal()}'.split(' ')[0] : '';
     });
     //
+  }
+
+   void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+     if (index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
+    }
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ReservationPage()),
+      );
+    }
+
+    if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const OfferPage()),
+      );
+    }
+
+    if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfilePage()),
+      );
+    }
   }
 
   
@@ -114,6 +151,10 @@ class _ReservationPageState extends State<ReservationPage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
       ),
     );
   }
