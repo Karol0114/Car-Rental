@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileapp_car_rental/auth_screen/signin_page.dart';
+import 'package:mobileapp_car_rental/cars_list_page.dart';
 import 'package:mobileapp_car_rental/reservation_page.dart';
 import 'package:mobileapp_car_rental/profile_page.dart';
 import 'package:mobileapp_car_rental/offer_page.dart';
@@ -44,6 +45,15 @@ class _HomeScreenState extends State<HomeScreen> {
         MaterialPageRoute(builder: (context) => ProfilePage()),
       );
     }
+  }
+
+  void navigateToCategory(String category) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CarsListScreen(category: category),
+      ),
+    );
   }
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -98,45 +108,35 @@ Widget build(BuildContext context) {
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ListTile(
                   title: Center(child: Text('SUV')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek SUV
-                  },
+                  onTap: () => navigateToCategory('SUV'),
                 ),
               ),
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ListTile(
                   title: Center(child: Text('Sportowe')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Sportowe
-                  },
+                  onTap: () => navigateToCategory('Sportowe'),
                 ),
               ),
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ListTile(
                   title: Center(child: Text('Luksusowe')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Po mieście
-                  },
+                  onTap: () => navigateToCategory('Luksusowe')
                 ),
               ),
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ListTile(
                   title: Center(child: Text('Kombi')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Po mieście
-                  },
+                  onTap: () => navigateToCategory('Kombi'),
                 ),
               ),
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: ListTile(
                   title: Center(child: Text('Nasze perełki')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Po mieście
-                  },
+                  onTap: () => navigateToCategory('Nasze perełki'),
                 ),
               ),
               // Możesz dodać więcej kafelków...
