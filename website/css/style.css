@@ -37,10 +37,10 @@ nav.small img{height:50px;}
 .clink{text-decoration:none;color:white;}
 #video{width:100%;float:left;background-image:url(tloduze.png);background-size:100%;text-align:center;border-bottom:1px solid white;}
 #video iframe{width:30%;height:300px;padding:10px;}
-#howrent{width:100%;float:left;border-bottom:1px solid black;background-color:#830000;color:white;padding:10px;}
+#howrent{width:100%;float:left;border-bottom:1px solid black;background-color:#830000;color:white;padding:10px;text-align:center;}
 #contact{width:100%;float:left;border-bottom:1px solid white;background-color:white;color:black;padding:10px;}
-#contactBasic {width:50%;float:left;}
-#contactForm {width:50%;float:left;}
+#contactBasic {width:40%;float:left;margin-left:10%;border:1ps solid black;border-radius:5px;background-color:#830000;padding:30px;color:white;}
+#contactForm {width:40%;float:left;margin-right:10%;border:1ps solid black;border-radius:5px;text-align:center;}
 #footer{background-color:black;width:100%;border-bottom:1px solid white;float:left;color:white;text-align:center;}
 
 #preloader{position:fixed;top:0;left:0;right:0;bottom:0;background:black;text-align:center;z-index:1000;vertical-align:middle; display: table-cell;  display: flex;
@@ -48,9 +48,40 @@ nav.small img{height:50px;}
   justify-content: center}
 #prelogo{width:30%;}
 
+.circle {
+  width: 200px;
+  height: 200px;
 
+  border-radius: 50%;
+  font-size: 16px;
+  color:black;
+  text-align: center;
+  background-color: white;
+  float: left;
+  margin-right:20px;
+  margin-bottom:80px;
+  margin-top:20px;
+}
+
+.circle img {
+	width:120px;
+	
+}
 
 #maps iframe{display:none;width:70%;padding:10px;}
+
+#infocar {
+	color:white;
+	visibility:none;
+	background-color:rgba(255, 0, 0, 0.3);
+	position:fixed;
+	width:100%;
+	height:100%;
+}
+
+
+
+
 
 
 
