@@ -102,3 +102,9 @@ $(document).ready(
 		);
 	}
 );
+
+
+
+function send() {
+  alert("Wiadomość została wysłana do obsługi!");
+}
