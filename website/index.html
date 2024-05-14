@@ -44,7 +44,7 @@
 	<div class="collapse navbar-collapse" id="menu">
 		<ul class="navbar-nav ml-auto mr-md-5">
 		<li class="nav-item"><a class="nav-link" href="#about">Jak wynająć?</a></li>
-		<li class="nav-item"><a class="nav-link" href="#koncerty">Promocje</a></li>
+		<li class="nav-item"><a class="nav-link" href="#popup-box">Promocje</a></li>
 		<li class="nav-item"><a class="nav-link" href="#about">O nas</a></li>
 		<li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
 		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="flase" id="submenu" aria-haspopup="true">Do pobrania</a>
@@ -56,6 +56,8 @@
 	</div>
 	</li>
 	<li class="nav-item"><a class="nav-link" href="cars.php">NASZE POJAZDY</a></li>
+	<li class="nav-item"><a class="nav-link" href="#login-box">logowanie</a></li>
+	<li class="nav-item"><a class="nav-link" href="user.php">Twoje konto</a></li>
 		</ul>
 	</div>
 	</nav>
@@ -255,7 +257,7 @@ SAMPLE SAMPLE SAMPLE
 
 
 </div>
-	
+
 	
 	
 	
@@ -263,6 +265,149 @@ SAMPLE SAMPLE SAMPLE
 	
 	
 	<div id="fb-root"></div>
+        <div id="popup-box" class="modal">
+            <div class="content">
+                <h1 style="color: green">
+                    PROGRAM LOJALNOŚCIOWY!
+                </h1>
+                <p>Aby skorzystać z naszego programu lojanlnościowego, muszisz zostać naszym stałym klientem!
+				Załóż konto na naszej stronie korzystając z panelu logowania! </br> Im więcej pojzdów wypożyczysz tym większy będzie twój stały rabat na nasze usługi!</br>
+				</p>
+                <a
+                    href="#"
+                    style="
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        color: #fe0606;
+                        font-size: 30px;
+                        text-decoration: none;
+                    "
+                    >&times;</a
+                >
+            </div>
+			
+			
+        </div>
+		
+		
+		<div id="login-box" class="modal">
+            <div class="content">
+                <h1 style="color: green">
+                    PANEL LOGOWANIA
+                </h1>
+                <p>Zaloguj się lub załóż konto</p>
+                <a
+                    href="#"
+                    style="
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        color: #fe0606;
+                        font-size: 30px;
+                        text-decoration: none;
+                    "
+                    >&times;</a
+                >
+<div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Logowanie</span></div>
+        <form action="#">
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Email lub login" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Hasło" required>
+          </div>
+          <div class="pass"><a href="#">Zapomniałeś hasła?</a></div>
+          <div class="row button">
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">Pierwszy raz u nas? <a href="#register-box">Załóż konto już teraz!</a></div>
+        </form>
+      </div>
+    </div>
+	
+	
+	
+	
+				
+            </div>
+			
+			
+        </div>
+		
+				<div id="register-box" class="modal">
+            <div class="content">
+                <h1 style="color: green">
+                    PANEL REJESTRACJI
+                </h1>
+                <p>Załóż konto!</p>
+                <a
+                    href="#"
+                    style="
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        color: #fe0606;
+                        font-size: 30px;
+                        text-decoration: none;
+                    "
+                    >&times;</a
+                >
+<div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Rejestracja</span></div>
+        <form action="#">
+		<div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Imię" required>
+          </div>
+		  <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Nazwisko" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Email" required>
+          </div>
+		  <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="login" required>
+          </div>
+		  <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Nr telefonu" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Hasło" required>
+          </div>
+		  <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="powtórz hasło" required>
+          </div>
+          <div class="row button">
+            <input type="submit" value="Załóż konto">
+          </div>
+        </form>
+      </div>
+    </div>
+	
+	
+	
+	
+				
+            </div>
+			
+			
+        </div>
+		
+		
+		
+		</div>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v8.0" nonce="3hXqlmb5"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
