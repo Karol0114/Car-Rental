@@ -5,18 +5,30 @@ import 'dart:convert';
 
 class CarsListScreen extends StatelessWidget {
   final String category;
+  final String searchQuery;
 
   const CarsListScreen({
     Key? key,
     required this.category,
+    this.searchQuery = '',
   }) : super(key: key);
 
-  Future<List<dynamic>> fetchCars() async {
-    final response =
-        await http.get(Uri.parse('http://10.0.2.2:80/api.php?type=$category'));
+  Future<List<Map<String, dynamic>>> fetchCars() async {
+    final uri = searchQuery.isNotEmpty
+        ? Uri.parse('http://10.0.2.2/api.php?search=$searchQuery')
+        : Uri.parse('http://10.0.2.2/api.php?type=$category');
+
+    final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      print(response.body); // To debug the JSON structure
+      final data = json.decode(response.body);
+      // Check if data is a list, if not, wrap it into a list
+      if (data is! List) {
+        return [data];
+      } else {
+        return data.cast<Map<String, dynamic>>();
+      }
     } else {
       throw Exception('Failed to load cars');
     }
@@ -26,15 +38,18 @@ class CarsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Samochody: $category'),
+        title: Text(
+            'Samochody: ${searchQuery.isNotEmpty ? 'Wyszukiwanie' : category}'),
       ),
-      body: FutureBuilder<List<dynamic>>(
+      body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchCars(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Text("Error: ${snapshot.error}");
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('Brak wyników'));
           } else {
             return ListView.builder(
               itemCount: snapshot.data!.length,

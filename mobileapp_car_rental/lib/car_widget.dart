@@ -53,13 +53,13 @@ class CarWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10.0),
-            Text('Rok produkcji: $year '),
+            Text('Rok produkcji: $year'),
             Text('Moc: $kmh KM'),
             Text('Pojemność skokowa: $engine cm3'),
-            Text('Paliwo: $fuel '),
+            Text('Paliwo: $fuel'),
             Text('Liczba miejsc: $seats'),
             Text('Liczba drzwi: $doors'),
-            Text('Skrzynia biegów: $transmission '),
+            Text('Skrzynia biegów: $transmission'),
             const SizedBox(height: 10.0),
             Text(
               'Cena: $price zł / dzień',
@@ -74,5 +74,4 @@ class CarWidget extends StatelessWidget {
       ),
     );
   }
-
 }
