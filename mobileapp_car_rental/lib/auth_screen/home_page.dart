@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileapp_car_rental/auth_screen/signin_page.dart';
+import 'package:mobileapp_car_rental/cars_list_page.dart';
 import 'package:mobileapp_car_rental/reservation_page.dart';
 import 'package:mobileapp_car_rental/profile_page.dart';
 import 'package:mobileapp_car_rental/offer_page.dart';
@@ -46,6 +46,25 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void navigateToCategory(String category) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CarsListScreen(category: category),
+      ),
+    );
+  }
+
+  void performSearch(String query) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            CarsListScreen(category: 'Wyszukiwanie', searchQuery: query),
+      ),
+    );
+  }
+
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Nasze samochody',
@@ -65,91 +84,81 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
-
   @override
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: const Text('Car Rental'),
-    ),
-    body: Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller: _searchQueryController,
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              hintText: "Znajdź samochód...",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Car Rental'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchQueryController,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: "Znajdź samochód...",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
+              onSubmitted: (query) {
+                performSearch(query);
+              },
             ),
-            onSubmitted: (query) {
-              // Tu można dodać logikę wyszukiwania
-            },
           ),
-        ),
-        Expanded(
-          child: ListView(
-            children: <Widget>[
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ListTile(
-                  title: Center(child: Text('SUV')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek SUV
-                  },
+          Expanded(
+            child: ListView(
+              children: <Widget>[
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: ListTile(
+                    title: Center(child: Text('SUV')),
+                    onTap: () => navigateToCategory('SUV'),
+                  ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ListTile(
-                  title: Center(child: Text('Sportowe')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Sportowe
-                  },
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: ListTile(
+                    title: Center(child: Text('Sportowe')),
+                    onTap: () => navigateToCategory('Sportowe'),
+                  ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ListTile(
-                  title: Center(child: Text('Luksusowe')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Po mieście
-                  },
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: ListTile(
+                      title: Center(child: Text('Luksusowe')),
+                      onTap: () => navigateToCategory('Luksusowe')),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ListTile(
-                  title: Center(child: Text('Kombi')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Po mieście
-                  },
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: ListTile(
+                    title: Center(child: Text('Kombi')),
+                    onTap: () => navigateToCategory('Kombi'),
+                  ),
                 ),
-              ),
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ListTile(
-                  title: Center(child: Text('Nasze perełki')),
-                  onTap: () {
-                    // Akcja po kliknięciu na kafelek Po mieście
-                  },
+                Card(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: ListTile(
+                    title: Center(child: Text('Nasze perełki')),
+                    onTap: () => navigateToCategory('Nasze perełki'),
+                  ),
                 ),
-              ),
-              // Możesz dodać więcej kafelków...
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
-    
-    bottomNavigationBar: CustomBottomNavBar(
+        ],
+      ),
+      bottomNavigationBar: CustomBottomNavBar(
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
       ),
-  );
-}
+    );
+  }
 }

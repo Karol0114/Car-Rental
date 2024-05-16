@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobileapp_car_rental/about_us.dart';
+import 'package:mobileapp_car_rental/contact.dart';
+import 'package:mobileapp_car_rental/regulations_page.dart';
 import 'package:mobileapp_car_rental/reservation_page.dart';
 import 'package:mobileapp_car_rental/offer_page.dart';
 import 'package:mobileapp_car_rental/auth_screen/custom_bottom_nav_bar.dart';
@@ -104,7 +107,10 @@ class _ProfilePageState extends State<ProfilePage>{
                 child: ListTile(
                   title: Center(child: Text('O nas')),
                   onTap: () {
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AboutUsPage()),
+                    );
                   },
                 ),
               ),
@@ -113,7 +119,10 @@ class _ProfilePageState extends State<ProfilePage>{
                 child: ListTile(
                   title: Center(child: Text('Kontakt')),
                   onTap: () {
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ContactPage())
+                    );
                   },
                 ),
               ),
@@ -158,7 +167,10 @@ class _ProfilePageState extends State<ProfilePage>{
                 child: ListTile(
                   title: Center(child: Text('Regulamin')),
                   onTap: () {
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const RegulationsPage()),
+                    );
                   },
                 ),
               ),
