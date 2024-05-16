@@ -31,12 +31,17 @@ try {
     }
 
     if (!empty($startDay) && !empty($endDay)) {
-        $conditions[] = "id_pojazdu NOT IN (
-            SELECT id_pojazdu FROM rezerwacje 
-            WHERE (od_kiedy <= :endDay AND do_kiedy >= :startDay) AND (czy_zarezerwowany IS NULL OR czy_zarezerwowany = FALSE)
-        )";
+        $query = "SELECT p.* FROM pojazdy p
+        LEFT JOIN rezerwacje r ON p.ID_Pojazdu = r.ID_Pojazdu AND (r.od_kiedy <= :startDay AND r.do_kiedy >= :endDay)
+        WHERE (r.czy_zarezerwowany IS NULL OR r.czy_zarezerwowany = FALSE) OR r.ID_Pojazdu IS NULL
+        GROUP BY p.ID_Pojazdu";
         $params[':startDay'] = $startDay;
         $params[':endDay'] = $endDay;
+        print_r("Start Day: ".$startDay);
+        print_r("EndDay: ".$endDay);
+        
+
+        
     }
 
     if (!empty($conditions)) {

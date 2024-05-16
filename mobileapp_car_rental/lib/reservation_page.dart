@@ -51,17 +51,24 @@ class _ReservationPageState extends State<ReservationPage> {
     }
     final startDate = "${_startDay!.year}-${_startDay!.month}-${_startDay!.day}";
     final endDate = "${_endDay!.year}-${_endDay!.month}-${_endDay!.day}";
+    print("Start date: $startDate");
+    print("End date: $endDate");
     final uri = Uri.parse('http://10.0.2.2/api.php?startDay=$startDate&endDay=$endDate');
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
+      print(response.body); // To debug the JSON structure
       final data = json.decode(response.body);
-      return data is List ? data.cast<Map<String, dynamic>>() : [];
+      // Check if data is a list, if not, wrap it into a list
+      if (data is! List) {
+        return [data];
+      } else {
+        return data.cast<Map<String, dynamic>>();
+      }
     } else {
-      throw Exception('Failed to load available cars');
+      throw Exception('Failed to load cars');
     }
   }
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -79,7 +86,7 @@ class _ReservationPageState extends State<ReservationPage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
     }
   }
-
+  @override
   Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
@@ -144,9 +151,7 @@ class _ReservationPageState extends State<ReservationPage> {
               } else if (snapshot.data!.isEmpty) {
                 return Text('Brak dostępnych samochodów');
               } else {
-                return SizedBox(
-                  height: 300,  // Ustaw wysokość według potrzeb
-                  child: ListView.builder(
+                  return ListView.builder(
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       var car = snapshot.data![index];
@@ -164,8 +169,7 @@ class _ReservationPageState extends State<ReservationPage> {
                         price: double.parse(car['cena_za_dobe'].toString()),
                       );
                     },
-                  ),
-                );
+                  );
               }
             },
           ),
