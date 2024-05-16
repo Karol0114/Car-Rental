@@ -4,6 +4,9 @@ import 'package:mobileapp_car_rental/offer_page.dart';
 import 'package:mobileapp_car_rental/profile_page.dart';
 import 'package:mobileapp_car_rental/auth_screen/custom_bottom_nav_bar.dart';
 import 'package:mobileapp_car_rental/auth_screen/home_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:mobileapp_car_rental/car_widget.dart'; // Ensure you have this custom widget
 
 class ReservationPage extends StatefulWidget {
   @override
@@ -17,145 +20,162 @@ class _ReservationPageState extends State<ReservationPage> {
   DateTime? _endDay;
   TextEditingController _startDayController = TextEditingController();
   TextEditingController _endDayController = TextEditingController();
-  
+
   @override
   void initState() {
     super.initState();
     _selectedDay = DateTime.now();
   }
-  // Funkcja do wyboru daty początkowej i końcowej
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
-      
       if (_startDay != null && _endDay != null) {
-        
         _startDay = selectedDay;
         _endDay = null;
         _selectedDay = focusedDay;
       } else if (_startDay == null || (selectedDay.isBefore(_startDay!))) {
-        // Jeżeli wybrano datę końcową
-        
         _startDay = selectedDay;
         _endDay = null;
       } else if (_endDay == null || selectedDay.isAfter(_startDay!)) {
-        // W innym przypadku ustaw jako datę początkową
         _endDay = selectedDay;
       }
-    
-      // Aktualizacja kontrolerow tekstu
 
       _startDayController.text = _startDay != null ? '${_startDay!.toLocal()}'.split(' ')[0] : '';
       _endDayController.text = _endDay != null ? '${_endDay!.toLocal()}'.split(' ')[0] : '';
     });
-    //
   }
 
-   void _onItemTapped(int index) {
+  Future<List<Map<String, dynamic>>> fetchAvailableCars() async {
+    if (_startDay == null || _endDay == null) {
+      return [];
+    }
+    final startDate = "${_startDay!.year}-${_startDay!.month}-${_startDay!.day}";
+    final endDate = "${_endDay!.year}-${_endDay!.month}-${_endDay!.day}";
+    final uri = Uri.parse('http://10.0.2.2/api.php?startDay=$startDate&endDay=$endDate');
+    final response = await http.get(uri);
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data is List ? data.cast<Map<String, dynamic>>() : [];
+    } else {
+      throw Exception('Failed to load available cars');
+    }
+  }
+
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-     if (index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
+    if (index == 0) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     }
     if (index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ReservationPage()),
-      );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ReservationPage()));
     }
-
     if (index == 2) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const OfferPage()),
-      );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const OfferPage()));
     }
-
     if (index == 3) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ProfilePage()),
-      );
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
     }
   }
 
-  
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Rezerwacja'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            TableCalendar(
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
-              focusedDay: _selectedDay!,
-              selectedDayPredicate: (day) {
-                return _startDay == day || _endDay == day;
-              },
-              onDaySelected: _onDaySelected,
-              rangeStartDay: _startDay,
-              rangeEndDay: _endDay,
-              rangeSelectionMode: RangeSelectionMode.enforced,
-              calendarStyle: CalendarStyle(
-                rangeHighlightColor: Colors.blue[700]!,
-                rangeStartDecoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  shape: BoxShape.circle
-                ),
-                rangeEndDecoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  shape: BoxShape.circle
-                ),
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('Rezerwacja'),
+    ),
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          TableCalendar(
+            firstDay: DateTime.utc(2010, 10, 16),
+            lastDay: DateTime.utc(2030, 3, 14),
+            focusedDay: _selectedDay!,
+            selectedDayPredicate: (day) => _startDay == day || _endDay == day,
+            onDaySelected: _onDaySelected,
+            rangeStartDay: _startDay,
+            rangeEndDay: _endDay,
+            rangeSelectionMode: RangeSelectionMode.enforced,
+            calendarStyle: CalendarStyle(
+              rangeHighlightColor: Colors.blue[700]!,
+              rangeStartDecoration: BoxDecoration(
+                color: Colors.blue[700],
+                shape: BoxShape.circle
+              ),
+              rangeEndDecoration: BoxDecoration(
+                color: Colors.blue[700],
+                shape: BoxShape.circle
               ),
             ),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: _startDayController,
-                    decoration: const InputDecoration(
-                      labelText: 'Początek rezerwacji',
-                    ),
-                    readOnly: true,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: _startDayController,
+                  decoration: const InputDecoration(
+                    labelText: 'Początek rezerwacji',
                   ),
-                  TextFormField(
-                    controller: _endDayController,
-                    decoration: const InputDecoration(
-                      labelText: 'Koniec rezerwacji',
-                    ),
-                    readOnly: true,
+                  readOnly: true,
+                ),
+                TextFormField(
+                  controller: _endDayController,
+                  decoration: const InputDecoration(
+                    labelText: 'Koniec rezerwacji',
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Logika przycisku OK
-                      if (_startDay != null && _endDay!= null) {
-                        // Zrealizuj rezerwację
-                      }
+                  readOnly: true,
+                ),
+                ElevatedButton(
+                  onPressed: fetchAvailableCars,
+                  child: const Text('Szukaj'),
+                ),
+              ],
+            ),
+          ),
+          FutureBuilder<List<Map<String, dynamic>>>(
+            future: fetchAvailableCars(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return Text("Error: ${snapshot.error}");
+              } else if (snapshot.data!.isEmpty) {
+                return Text('Brak dostępnych samochodów');
+              } else {
+                return SizedBox(
+                  height: 300,  // Ustaw wysokość według potrzeb
+                  child: ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      var car = snapshot.data![index];
+                      return CarWidget(
+                        name: car['marka'],
+                        model: car['model'],
+                        imageAsset: car['zdjecie'],
+                        year: car['rok_produkcji'],
+                        kmh: car['KM'],
+                        fuel: car['rodzaj_paliwa'],
+                        engine: double.parse(car['pojemnosc_silnika'].toString()),
+                        seats: int.parse(car['ilosc_siedzen'].toString()),
+                        doors: int.parse(car['ilosc_drzwi'].toString()),
+                        transmission: car['skrzynia_biegow'],
+                        price: double.parse(car['cena_za_dobe'].toString()),
+                      );
                     },
-                    child: Text('Szukaj'),
                   ),
-            // Tutaj możesz dodać inne elementy UI, takie jak przyciski wyboru samochodów itp.
-                ],
-              ),
-            ),
-          ],
-        ),
+                );
+              }
+            },
+          ),
+        ],
       ),
-      bottomNavigationBar: CustomBottomNavBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
-    );
-  }
+    ),
+    bottomNavigationBar: CustomBottomNavBar(
+      selectedIndex: _selectedIndex,
+      onItemTapped: _onItemTapped,
+    ),
+  );
+}
 }
