@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobileapp_car_rental/car_widget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:mobileapp_car_rental/car_widget.dart';
 
 class CarsListScreen extends StatelessWidget {
   final String category;
@@ -23,15 +23,29 @@ class CarsListScreen extends StatelessWidget {
     if (response.statusCode == 200) {
       print(response.body); // To debug the JSON structure
       final data = json.decode(response.body);
-      // Check if data is a list, if not, wrap it into a list
-      if (data is! List) {
-        return [data];
-      } else {
-        return data.cast<Map<String, dynamic>>();
-      }
+      return prepareCarData(data is List ? data : [data]);
     } else {
       throw Exception('Failed to load cars');
     }
+  }
+
+  List<Map<String, dynamic>> prepareCarData(List<dynamic> rawData) {
+    return rawData.map((data) {
+      return {
+        'marka': data['marka'] ?? 'Brak marki',
+        'model': data['model'] ?? 'Brak modelu',
+        'zdjecie': data['zdjecie'] ?? 'assets/default_image.png',
+        'rok_produkcji': data['rok_produkcji'] ?? 0,
+        'KM': data['KM'] ?? 0,
+        'rodzaj_paliwa': data['rodzaj_paliwa'] ?? 'Nieznany',
+        'pojemnosc_silnika':
+            double.tryParse(data['pojemnosc_silnika'].toString()) ?? 0.0,
+        'ilosc_siedzen': int.tryParse(data['ilosc_siedzen'].toString()) ?? 0,
+        'ilosc_drzwi': int.tryParse(data['ilosc_drzwi'].toString()) ?? 0,
+        'skrzynia_biegow': data['skrzynia_biegow'] ?? 'Nieznana',
+        'cena_za_dobe': double.tryParse(data['cena_za_dobe'].toString()) ?? 0.0,
+      };
+    }).toList();
   }
 
   @override

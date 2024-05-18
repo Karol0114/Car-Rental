@@ -37,11 +37,8 @@ try {
         GROUP BY p.ID_Pojazdu";
         $params[':startDay'] = $startDay;
         $params[':endDay'] = $endDay;
-        print_r("Start Day: ".$startDay);
-        print_r("EndDay: ".$endDay);
-        
-
-        
+        print_r("Start Day: " . $startDay);
+        print_r("EndDay: " . $endDay);
     }
 
     if (!empty($conditions)) {
@@ -61,4 +58,3 @@ try {
 } catch (Exception $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
-?>
