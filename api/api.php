@@ -2,10 +2,10 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
-$host = 'localhost'; // MySQL server address
-$dbname = 'wypozyczalnia'; // Database name
-$username = 'root'; // MySQL username
-$password = ''; // MySQL password
+$host = 'localhost';
+$dbname = 'wypozyczalnia';
+$username = 'root';
+$password = '';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -32,29 +32,40 @@ try {
 
     if (!empty($startDay) && !empty($endDay)) {
         $query = "SELECT p.* FROM pojazdy p
-        LEFT JOIN rezerwacje r ON p.ID_Pojazdu = r.ID_Pojazdu AND (r.od_kiedy <= :startDay AND r.do_kiedy >= :endDay)
-        WHERE (r.czy_zarezerwowany IS NULL OR r.czy_zarezerwowany = FALSE) OR r.ID_Pojazdu IS NULL
-        GROUP BY p.ID_Pojazdu";
+        LEFT JOIN rezerwacje r ON p.ID_Pojazdu = r.ID_Pojazdu AND (r.od_kiedy <= :endDay AND r.do_kiedy >= :startDay)
+        WHERE (r.ID_Pojazdu IS NULL) OR (r.czy_zarezerwowany = FALSE)";
+
         $params[':startDay'] = $startDay;
         $params[':endDay'] = $endDay;
-        print_r("Start Day: " . $startDay);
-        print_r("EndDay: " . $endDay);
     }
 
     if (!empty($conditions)) {
         $query .= " WHERE " . implode(' AND ', $conditions);
     }
 
+    // Debugging before prepare
+    error_log(print_r(['query' => $query, 'params' => $params], true));
+
     $stmt = $pdo->prepare($query);
-    foreach ($params as $key => &$val) {
-        $stmt->bindParam($key, $val);
+
+    // Binding parameters
+    foreach ($params as $key => $val) {
+        error_log("Binding: $key => $val");
+        $stmt->bindValue($key, $val);
     }
 
     $stmt->execute();
     $cars = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($cars);
+
+    if (empty($cars)) {
+        echo json_encode(['message' => 'No cars found']);
+    } else {
+        echo json_encode($cars);
+    }
 } catch (PDOException $e) {
+    error_log("PDOException: " . $e->getMessage());
     echo json_encode(['error' => $e->getMessage()]);
 } catch (Exception $e) {
+    error_log("Exception: " . $e->getMessage());
     echo json_encode(['error' => $e->getMessage()]);
 }

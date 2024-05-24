@@ -21,10 +21,16 @@ class CarsListScreen extends StatelessWidget {
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
-      print(response.body); // To debug the JSON structure
+      print('Response body: ${response.body}'); // Debugging JSON structure
       final data = json.decode(response.body);
+      if (data is Map && data.containsKey('error')) {
+        print('Error: ${data['error']}');
+        throw Exception('Failed to load cars');
+      }
       return prepareCarData(data is List ? data : [data]);
     } else {
+      print(
+          'Failed to load cars: ${response.statusCode} ${response.reasonPhrase}');
       throw Exception('Failed to load cars');
     }
   }
