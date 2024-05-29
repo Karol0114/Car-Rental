@@ -43,14 +43,14 @@
     </nav>
 </header>
 
-<main class="container mt-5">
+<main class="container mt-5" style="margin-top:100px;">
     <?php
     // Get marka and model from URL parameters
     $marka = isset($_GET['marka']) ? $_GET['marka'] : '';
     $model = isset($_GET['model']) ? $_GET['model'] : '';
 
     if ($marka && $model) {
-        echo "<h1>Rezerwacja pojazdu: $marka $model</h1>";
+        echo "<br><br><br><br><br><br><h1>Rezerwacja pojazdu: $marka $model</h1>";
     } else {
         echo "<h1>Brak wybranego pojazdu!</h1>";
         echo "<p>Proszę wybrać pojazd z <a href='cars.php'>naszej oferty</a>.</p>";

@@ -127,6 +127,7 @@ nav.small img{height:50px;}
   background: rgba(26,188,156,0.3);
 }
 .container{
+	margin-top:100px;
   max-width: 440px;
   padding: 0 10px;
   margin: 120px auto;

@@ -29,6 +29,13 @@ session_start();
 
 
 <header>
+<?php
+
+if (isset($_SESSION['status'])) {
+    echo '<script>alert("' . $_SESSION['status'] . '");</script>';
+}
+?>
+
 
 	<nav class="navbar navbar-dark navbar-expand-lg">
 	<a class="navbar-brand" href="#"><img class="logo" src="../grafika/autodok_logo_round.png" alt="AutoDOK" ></a>
@@ -65,14 +72,14 @@ session_start();
 	
 	
 	
-	if (!isset($_SESSION['user'])){
-	echo '<li class="nav-item"><a class="nav-link" href="#login-box">logowanie</a></li>';
+	if (isset($_SESSION['user_id'])){
+		echo '<li class="nav-item"><a class="nav-link" href="user.php">Twoje konto</a></li><li class="nav-item"><a class="nav-link" href="logout.php">WYLOGUJ</a></li>';
 	}else{
-	echo '<li class="nav-item"><a class="nav-link" href="user.php">Twoje konto</a></li>';
+		echo '<li class="nav-item"><a class="nav-link" href="#login-box">logowanie</a></li>';
 	}
 	
 	
-	
+	$_SESSION['status'] = null;
 	?>
 		</ul>
 	</div>
