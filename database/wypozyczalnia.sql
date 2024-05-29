@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 24, 2024 at 05:09 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Czas generowania: 29 Maj 2024, 23:13
+-- Wersja serwera: 10.4.14-MariaDB
+-- Wersja PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,42 +18,43 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `wypozyczalnia`
+-- Baza danych: `wypozyczalnia`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adresy`
+-- Struktura tabeli dla tabeli `adresy`
 --
 
 CREATE TABLE `adresy` (
   `ID_adresu` int(11) NOT NULL,
-  `miasto` text NOT NULL,
-  `ulica` text NOT NULL,
-  `numer` text NOT NULL,
-  `kod_pocztowy` text DEFAULT NULL
+  `miasto` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `ulica` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `numer` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `kod_pocztowy` text COLLATE utf8mb4_polish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Dumping data for table `adresy`
+-- Zrzut danych tabeli `adresy`
 --
 
 INSERT INTO `adresy` (`ID_adresu`, `miasto`, `ulica`, `numer`, `kod_pocztowy`) VALUES
 (1, 'Piekary Śląskie', 'Jesienna', '20', '41-943'),
-(2, 'Katowice', 'Piękna', '10/2', '41-500');
+(2, 'Katowice', 'Piękna', '10/2', '41-500'),
+(3, 'Tarnowskie Góry', 'Mikołaja Reja', '8a', '42-600');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `historia_napraw_i_usterek`
+-- Struktura tabeli dla tabeli `historia_napraw_i_usterek`
 --
 
 CREATE TABLE `historia_napraw_i_usterek` (
   `ID_naprawy` int(11) NOT NULL,
   `ID_pojazdu` int(11) NOT NULL,
   `ID_pracownika` int(11) NOT NULL,
-  `opis_usterki` text NOT NULL,
+  `opis_usterki` text COLLATE utf8mb4_polish_ci NOT NULL,
   `data_usterki` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `data_naprawy` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
@@ -61,43 +62,44 @@ CREATE TABLE `historia_napraw_i_usterek` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `klienci`
+-- Struktura tabeli dla tabeli `klienci`
 --
 
 CREATE TABLE `klienci` (
   `ID_klienta` int(11) NOT NULL,
-  `pesel` varchar(11) NOT NULL,
+  `pesel` varchar(11) COLLATE utf8mb4_polish_ci NOT NULL,
   `ID_adresu` int(11) NOT NULL,
-  `imie` text NOT NULL,
-  `nazwisko` text NOT NULL,
+  `imie` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `nazwisko` text COLLATE utf8mb4_polish_ci NOT NULL,
   `od_kiedy_prawo_jazdy` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Dumping data for table `klienci`
+-- Zrzut danych tabeli `klienci`
 --
 
 INSERT INTO `klienci` (`ID_klienta`, `pesel`, `ID_adresu`, `imie`, `nazwisko`, `od_kiedy_prawo_jazdy`) VALUES
-(4, '000000123', 1, 'Oscar', 'Czempiel', '2024-05-01');
+(4, '000000123', 1, 'Oscar', 'Czempiel', '2024-05-01'),
+(5, '01251111111', 3, 'Dawid', 'Pudlik', '2019-05-13');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pojazdy`
+-- Struktura tabeli dla tabeli `pojazdy`
 --
 
 CREATE TABLE `pojazdy` (
   `ID_pojazdu` int(11) NOT NULL,
-  `numer_rejestracyjny` varchar(10) NOT NULL,
-  `kategoria` varchar(15) NOT NULL,
-  `zdjecie` text NOT NULL,
-  `marka` text NOT NULL,
-  `model` text NOT NULL,
+  `numer_rejestracyjny` varchar(10) COLLATE utf8mb4_polish_ci NOT NULL,
+  `kategoria` varchar(15) COLLATE utf8mb4_polish_ci NOT NULL,
+  `zdjecie` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `marka` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `model` text COLLATE utf8mb4_polish_ci NOT NULL,
   `rok_produkcji` int(5) NOT NULL,
   `pojemnosc_silnika` float NOT NULL,
   `KM` int(11) NOT NULL,
-  `skrzynia_biegow` varchar(20) NOT NULL,
-  `rodzaj_paliwa` text NOT NULL,
+  `skrzynia_biegow` varchar(20) COLLATE utf8mb4_polish_ci NOT NULL,
+  `rodzaj_paliwa` text COLLATE utf8mb4_polish_ci NOT NULL,
   `ubezpieczenie` date NOT NULL,
   `przeglad` date NOT NULL,
   `ilosc_drzwi` int(11) NOT NULL,
@@ -106,7 +108,7 @@ CREATE TABLE `pojazdy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Dumping data for table `pojazdy`
+-- Zrzut danych tabeli `pojazdy`
 --
 
 INSERT INTO `pojazdy` (`ID_pojazdu`, `numer_rejestracyjny`, `kategoria`, `zdjecie`, `marka`, `model`, `rok_produkcji`, `pojemnosc_silnika`, `KM`, `skrzynia_biegow`, `rodzaj_paliwa`, `ubezpieczenie`, `przeglad`, `ilosc_drzwi`, `ilosc_siedzen`, `cena_za_dobe`) VALUES
@@ -124,30 +126,31 @@ INSERT INTO `pojazdy` (`ID_pojazdu`, `numer_rejestracyjny`, `kategoria`, `zdjeci
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pracownicy`
+-- Struktura tabeli dla tabeli `pracownicy`
 --
 
 CREATE TABLE `pracownicy` (
   `ID_pracownika` int(11) NOT NULL,
-  `pesel` varchar(11) NOT NULL,
+  `pesel` varchar(11) COLLATE utf8mb4_polish_ci NOT NULL,
   `ID_adresu` int(11) NOT NULL,
-  `imie` text NOT NULL,
-  `nazwisko` text NOT NULL,
-  `stanowisko` text NOT NULL,
+  `imie` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `nazwisko` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `stanowisko` text COLLATE utf8mb4_polish_ci NOT NULL,
   `pensja` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Dumping data for table `pracownicy`
+-- Zrzut danych tabeli `pracownicy`
 --
 
 INSERT INTO `pracownicy` (`ID_pracownika`, `pesel`, `ID_adresu`, `imie`, `nazwisko`, `stanowisko`, `pensja`) VALUES
-(3, '0000000125', 2, 'Jean', 'Kowalski', 'niski szczebel', 1200);
+(3, '0000000125', 2, 'Jean', 'Kowalski', 'niski szczebel', 1200),
+(7, '01251111111', 3, 'Dawid', 'Pudlik', 'Utrzymanie ruchu', 3500);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `program_lojalnosciowy`
+-- Struktura tabeli dla tabeli `program_lojalnosciowy`
 --
 
 CREATE TABLE `program_lojalnosciowy` (
@@ -160,7 +163,7 @@ CREATE TABLE `program_lojalnosciowy` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rezerwacje`
+-- Struktura tabeli dla tabeli `rezerwacje`
 --
 
 CREATE TABLE `rezerwacje` (
@@ -176,7 +179,30 @@ CREATE TABLE `rezerwacje` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wypozyczenia`
+-- Struktura tabeli dla tabeli `uzytkownicy`
+--
+
+CREATE TABLE `uzytkownicy` (
+  `id_uzytkownika` int(11) NOT NULL,
+  `login` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `haslo` varchar(300) COLLATE utf8_polish_ci NOT NULL,
+  `data_utworzenia` date NOT NULL,
+  `pracownik_id` int(11) DEFAULT NULL,
+  `klient_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `uzytkownicy`
+--
+
+INSERT INTO `uzytkownicy` (`id_uzytkownika`, `login`, `email`, `haslo`, `data_utworzenia`, `pracownik_id`, `klient_id`) VALUES
+(1, 'dawid.pudlik', 'dawid.pudlik@gsuite.us.edu.pl', 'qwerty', '2024-05-05', 7, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `wypozyczenia`
 --
 
 CREATE TABLE `wypozyczenia` (
@@ -187,17 +213,17 @@ CREATE TABLE `wypozyczenia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
--- Indexes for table `adresy`
+-- Indeksy dla tabeli `adresy`
 --
 ALTER TABLE `adresy`
   ADD PRIMARY KEY (`ID_adresu`);
 
 --
--- Indexes for table `historia_napraw_i_usterek`
+-- Indeksy dla tabeli `historia_napraw_i_usterek`
 --
 ALTER TABLE `historia_napraw_i_usterek`
   ADD PRIMARY KEY (`ID_naprawy`),
@@ -205,7 +231,7 @@ ALTER TABLE `historia_napraw_i_usterek`
   ADD KEY `FK_historia_ID_pracownika` (`ID_pracownika`);
 
 --
--- Indexes for table `klienci`
+-- Indeksy dla tabeli `klienci`
 --
 ALTER TABLE `klienci`
   ADD PRIMARY KEY (`ID_klienta`),
@@ -213,13 +239,13 @@ ALTER TABLE `klienci`
   ADD KEY `FK_klienci_ID_adresu` (`ID_adresu`);
 
 --
--- Indexes for table `pojazdy`
+-- Indeksy dla tabeli `pojazdy`
 --
 ALTER TABLE `pojazdy`
   ADD PRIMARY KEY (`ID_pojazdu`);
 
 --
--- Indexes for table `pracownicy`
+-- Indeksy dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
   ADD PRIMARY KEY (`ID_pracownika`),
@@ -227,13 +253,13 @@ ALTER TABLE `pracownicy`
   ADD KEY `FK_pracownicy_ID_adresu` (`ID_adresu`);
 
 --
--- Indexes for table `program_lojalnosciowy`
+-- Indeksy dla tabeli `program_lojalnosciowy`
 --
 ALTER TABLE `program_lojalnosciowy`
   ADD KEY `FK_program_ID_klienta` (`ID_klienta`);
 
 --
--- Indexes for table `rezerwacje`
+-- Indeksy dla tabeli `rezerwacje`
 --
 ALTER TABLE `rezerwacje`
   ADD PRIMARY KEY (`ID_rezerwacji`),
@@ -242,7 +268,15 @@ ALTER TABLE `rezerwacje`
   ADD KEY `FK_rezerwacje_ID_pracownika` (`ID_pracownika`);
 
 --
--- Indexes for table `wypozyczenia`
+-- Indeksy dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  ADD PRIMARY KEY (`id_uzytkownika`),
+  ADD KEY `fk_pracownik` (`pracownik_id`),
+  ADD KEY `fk_klient` (`klient_id`);
+
+--
+-- Indeksy dla tabeli `wypozyczenia`
 --
 ALTER TABLE `wypozyczenia`
   ADD PRIMARY KEY (`ID_wypozyczenia`),
@@ -251,82 +285,88 @@ ALTER TABLE `wypozyczenia`
   ADD KEY `FK_wypozyczenia_ID_klienta` (`ID_klienta`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla zrzuconych tabel
 --
 
 --
--- AUTO_INCREMENT for table `adresy`
+-- AUTO_INCREMENT dla tabeli `adresy`
 --
 ALTER TABLE `adresy`
-  MODIFY `ID_adresu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_adresu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `historia_napraw_i_usterek`
+-- AUTO_INCREMENT dla tabeli `historia_napraw_i_usterek`
 --
 ALTER TABLE `historia_napraw_i_usterek`
   MODIFY `ID_naprawy` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `klienci`
+-- AUTO_INCREMENT dla tabeli `klienci`
 --
 ALTER TABLE `klienci`
-  MODIFY `ID_klienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_klienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `pojazdy`
+-- AUTO_INCREMENT dla tabeli `pojazdy`
 --
 ALTER TABLE `pojazdy`
   MODIFY `ID_pojazdu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `pracownicy`
+-- AUTO_INCREMENT dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
-  MODIFY `ID_pracownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_pracownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `rezerwacje`
+-- AUTO_INCREMENT dla tabeli `rezerwacje`
 --
 ALTER TABLE `rezerwacje`
-  MODIFY `ID_rezerwacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_rezerwacji` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `wypozyczenia`
+-- AUTO_INCREMENT dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  MODIFY `id_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT dla tabeli `wypozyczenia`
 --
 ALTER TABLE `wypozyczenia`
   MODIFY `ID_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Ograniczenia dla zrzutów tabel
 --
 
 --
--- Constraints for table `historia_napraw_i_usterek`
+-- Ograniczenia dla tabeli `historia_napraw_i_usterek`
 --
 ALTER TABLE `historia_napraw_i_usterek`
   ADD CONSTRAINT `FK_historia_ID_pojazdu` FOREIGN KEY (`ID_pojazdu`) REFERENCES `pojazdy` (`ID_pojazdu`),
   ADD CONSTRAINT `FK_historia_ID_pracownika` FOREIGN KEY (`ID_pracownika`) REFERENCES `pracownicy` (`ID_pracownika`);
 
 --
--- Constraints for table `klienci`
+-- Ograniczenia dla tabeli `klienci`
 --
 ALTER TABLE `klienci`
   ADD CONSTRAINT `FK_klienci_ID_adresu` FOREIGN KEY (`ID_adresu`) REFERENCES `adresy` (`ID_adresu`);
 
 --
--- Constraints for table `pracownicy`
+-- Ograniczenia dla tabeli `pracownicy`
 --
 ALTER TABLE `pracownicy`
   ADD CONSTRAINT `FK_pracownicy_ID_adresu` FOREIGN KEY (`ID_adresu`) REFERENCES `adresy` (`ID_adresu`);
 
 --
--- Constraints for table `program_lojalnosciowy`
+-- Ograniczenia dla tabeli `program_lojalnosciowy`
 --
 ALTER TABLE `program_lojalnosciowy`
   ADD CONSTRAINT `FK_program_ID_klienta` FOREIGN KEY (`ID_klienta`) REFERENCES `klienci` (`ID_klienta`);
 
 --
--- Constraints for table `rezerwacje`
+-- Ograniczenia dla tabeli `rezerwacje`
 --
 ALTER TABLE `rezerwacje`
   ADD CONSTRAINT `FK_rezerwacje_ID_klienta` FOREIGN KEY (`ID_klienta`) REFERENCES `klienci` (`ID_klienta`),
@@ -334,7 +374,14 @@ ALTER TABLE `rezerwacje`
   ADD CONSTRAINT `FK_rezerwacje_ID_pracownika` FOREIGN KEY (`ID_pracownika`) REFERENCES `pracownicy` (`ID_pracownika`);
 
 --
--- Constraints for table `wypozyczenia`
+-- Ograniczenia dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  ADD CONSTRAINT `fk_klient` FOREIGN KEY (`klient_id`) REFERENCES `klienci` (`ID_klienta`),
+  ADD CONSTRAINT `fk_pracownik` FOREIGN KEY (`pracownik_id`) REFERENCES `pracownicy` (`ID_pracownika`);
+
+--
+-- Ograniczenia dla tabeli `wypozyczenia`
 --
 ALTER TABLE `wypozyczenia`
   ADD CONSTRAINT `FK_wypozyczenia_ID_klienta` FOREIGN KEY (`ID_klienta`) REFERENCES `klienci` (`ID_klienta`),
