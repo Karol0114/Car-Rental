@@ -4,10 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 class ContactPage extends StatelessWidget {
   const ContactPage({Key? key}) : super(key: key);
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
       throw 'Could not launch $url';
     }
   }
@@ -46,7 +45,8 @@ class ContactPage extends StatelessWidget {
               child: ListTile(
                 leading: const Icon(Icons.phone),
                 title: const Text('666 - 555 - 666'),
-                onTap: () => _launchURL('tel://666555666'), // Ustaw prawidłowy numer telefonu
+                onTap: () => _launchURL(
+                    'tel:666555666'), // Ustaw prawidłowy numer telefonu
               ),
             ),
             const SizedBox(height: 40),
@@ -97,15 +97,18 @@ class ContactPage extends StatelessWidget {
               children: [
                 IconButton(
                   icon: const Icon(Icons.facebook),
-                  onPressed: () => _launchURL('https://www.facebook.com/profile.php?id=61557221683378'), // Ustaw prawidłowy URL do Facebooka
+                  onPressed: () => _launchURL(
+                      'https://www.facebook.com/profile.php?id=61557221683378'), // Ustaw prawidłowy URL do Facebooka
                 ),
                 IconButton(
                   icon: const Icon(Icons.movie_edit),
-                  onPressed: () => _launchURL('https://www.youtube.com/channel/UCGKKkhTzRmWEAg2ea_nUlNQ'), // Ustaw prawidłowy URL do YouTube
+                  onPressed: () => _launchURL(
+                      'https://www.youtube.com/channel/UCGKKkhTzRmWEAg2ea_nUlNQ'), // Ustaw prawidłowy URL do YouTube
                 ),
                 IconButton(
                   icon: const Icon(Icons.photo_camera),
-                  onPressed: () => _launchURL('https://www.instagram.com'), // Ustaw prawidłowy URL do Instagrama
+                  onPressed: () => _launchURL(
+                      'https://www.instagram.com'), // Ustaw prawidłowy URL do Instagrama
                 ),
                 IconButton(
                   icon: const Icon(Icons.mail_outline),
@@ -118,4 +121,10 @@ class ContactPage extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: ContactPage(),
+  ));
 }
