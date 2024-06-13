@@ -5,6 +5,8 @@ import 'package:mobileapp_car_rental/reservation_page.dart';
 import 'package:mobileapp_car_rental/profile_page.dart';
 import 'package:mobileapp_car_rental/offer_page.dart';
 import 'package:mobileapp_car_rental/auth_screen/custom_bottom_nav_bar.dart';
+import 'package:mobileapp_car_rental/scan_registraion.dart';
+import 'package:camera/camera.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,10 +17,32 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  CameraController? _cameraController;
+  List<CameraDescription>? _cameras;
   final TextEditingController _searchQueryController = TextEditingController();
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  @override
+  void initState() {
+    super.initState();
+    _initCamera();
+  }
+
+  Future<void> _initCamera() async {
+    _cameras = await availableCameras();
+    if (_cameras!.isNotEmpty) {
+      _cameraController = CameraController(_cameras!.first, ResolutionPreset.medium);
+      await _cameraController!.initialize();
+    }
+  }
+
+  @override
+  void dispose() {
+    _cameraController?.dispose();
+    super.dispose();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -31,10 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    if (index == 2) {
+    if (index == 2 && _cameraController != null) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => OfferPage()),
+        MaterialPageRoute(builder: (_) => CameraScreen(camera: _cameraController!.description)),
       );
     }
 
