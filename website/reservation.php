@@ -6,6 +6,7 @@
     <title>Rezerwacja pojazdu - AutoDOK</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Aldrich|Bangers|Bebas+Neue|Black+Ops+One|Changa|Concert+One|Fredoka+One|Indie+Flower|Lacquer|Neucha|Odibee+Sans|Permanent+Marker|Raleway|Righteous|Squada+One|Teko|Trade+Winds|Yeon+Sung|ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -32,18 +33,22 @@
                 <li class="nav-item"><a class="nav-link" href="cars.php">NASZE POJAZDY</a></li>
                 <?php
                 session_start();
-                if (!isset($_SESSION['user'])){
-                    echo '<li class="nav-item"><a class="nav-link" href="#login-box">logowanie</a></li>';
+                if (!isset($_SESSION['user_id'])){
+                    echo '<li class="nav-item"><a class="nav-link" href="index.php#login-box">logowanie</a></li>';
                 }else{
                     echo '<li class="nav-item"><a class="nav-link" href="user.php">Twoje konto</a></li>';
                 }
+				if (isset($_SESSION['status'])) {
+					echo '<script>alert("' . $_SESSION['status'] . '");</script>';
+					$_SESSION['status'] = null;
+}					
                 ?>
             </ul>
         </div>
     </nav>
 </header>
 
-<main class="container mt-5" style="margin-top:100px;">
+<main class="container mt-5" style="margin-top:100px;color:white;">
     <?php
     // Get marka and model from URL parameters
     $marka = isset($_GET['marka']) ? $_GET['marka'] : '';
@@ -63,18 +68,18 @@
         <input type="hidden" name="model" value="<?php echo htmlspecialchars($model); ?>">
         
         <div class="form-group">
-            <label for="name">Imię i nazwisko:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+
+            <input type="hidden" class="form-control" id="name" name="name" required>
         </div>
         
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+
+            <input type="hidden" class="form-control" id="email" name="email" required>
         </div>
         
         <div class="form-group">
-            <label for="phone">Numer telefonu:</label>
-            <input type="text" class="form-control" id="phone" name="phone" required>
+ 
+            <input type="hidden" class="form-control" id="phone" name="phone" required>
         </div>
         
         <div class="form-group">

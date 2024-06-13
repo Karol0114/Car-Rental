@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['status'])) {
+    echo '<script>alert("' . $_SESSION['status'] . '");</script>';
+}
 ?>
 
 <head>
@@ -95,11 +98,12 @@ td {
                 </li>
                 <li class="nav-item"><a class="nav-link" href="cars.php">NASZE POJAZDY</a></li>
                 <?php
-                if (!isset($_SESSION['user'])) {
-                    echo '<li class="nav-item"><a class="nav-link" href="#login-box">logowanie</a></li>';
+                if (!isset($_SESSION['user_id'])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="index.php#login-box">logowanie</a></li>';
                 } else {
                     echo '<li class="nav-item"><a class="nav-link" href="user.php">Twoje konto</a></li>';
                 }
+				$_SESSION['status'] = null;
                 ?>
             </ul>
         </div>
