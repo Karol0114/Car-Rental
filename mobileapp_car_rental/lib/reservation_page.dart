@@ -128,6 +128,9 @@ class _ReservationPageState extends State<ReservationPage> {
                 rangeEndDecoration: BoxDecoration(
                     color: Colors.blue[700], shape: BoxShape.circle),
               ),
+              availableCalendarFormats: const {
+                CalendarFormat.month: 'Month',
+              },
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
