@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 13 Cze 2024, 21:07
+-- Czas generowania: 13 Cze 2024, 21:42
 -- Wersja serwera: 10.4.14-MariaDB
 -- Wersja PHP: 7.4.11
 
@@ -224,6 +224,30 @@ CREATE TABLE `wypozyczenia` (
   `ID_klienta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `zapytania`
+--
+
+CREATE TABLE `zapytania` (
+  `id` int(11) NOT NULL,
+  `imie` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `nazwisko` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_polish_ci NOT NULL,
+  `tresc` text COLLATE utf8_polish_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `zapytania`
+--
+
+INSERT INTO `zapytania` (`id`, `imie`, `nazwisko`, `email`, `tresc`, `created_at`) VALUES
+(1, 'Dawid', 'Pudlik', 'dawidp0511@wp.pl', 'qwerweqweeqwqwe', '2024-06-13 19:41:11'),
+(2, 'Dawid', 'Pudlik', 'dawidp0511@wp.pl', 'qwerweqweeqwqwe', '2024-06-13 19:42:04'),
+(3, 'Dawid', 'Sikora', 'pawelp337@wp.pl', 'qweqweeqwqew', '2024-06-13 19:42:22');
+
 --
 -- Indeksy dla zrzutów tabel
 --
@@ -297,6 +321,12 @@ ALTER TABLE `wypozyczenia`
   ADD KEY `FK_wypozyczenia_ID_klienta` (`ID_klienta`);
 
 --
+-- Indeksy dla tabeli `zapytania`
+--
+ALTER TABLE `zapytania`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT dla zrzuconych tabel
 --
 
@@ -347,6 +377,12 @@ ALTER TABLE `uzytkownicy`
 --
 ALTER TABLE `wypozyczenia`
   MODIFY `ID_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `zapytania`
+--
+ALTER TABLE `zapytania`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ograniczenia dla zrzutów tabel
