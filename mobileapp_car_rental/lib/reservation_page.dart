@@ -174,6 +174,7 @@ class _ReservationPageState extends State<ReservationPage> {
                       itemBuilder: (context, index) {
                         var car = snapshot.data![index];
                         return CarWidget(
+                          id: car['id'],
                           name: car['marka'],
                           model: car['model'],
                           imageAsset: car['zdjecie'],

@@ -112,10 +112,7 @@ packages:
       sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
     version: "1.0.8"
-=======
-    version: "1.0.6"
   dio:
     dependency: "direct main"
     description:
@@ -124,7 +121,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.6"
->>>>>>> main
   fake_async:
     dependency: transitive
     description:
@@ -428,7 +424,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
-<<<<<<< HEAD
   mysql1:
     dependency: "direct main"
     description:
@@ -445,8 +440,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-=======
->>>>>>> main
   path:
     dependency: transitive
     description:

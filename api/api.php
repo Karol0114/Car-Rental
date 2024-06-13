@@ -11,6 +11,37 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'reserve') {
+        // Pobieranie danych z formularza
+        $pesel = $_POST['pesel'];
+        $imie = $_POST['imie'];
+        $nazwisko = $_POST['nazwisko'];
+        $prawo_jazdy_od = $_POST['prawo_jazdy_od'];
+        $miasto = $_POST['miasto'];
+        $ulica = $_POST['ulica'];
+        $numer = $_POST['numer'];
+        $kod_pocztowy = $_POST['kod_pocztowy'];
+        $ID_Pojazdu = $_POST['ID_Pojazdu'];
+        $od_kiedy = $_POST['od_kiedy'];
+        $do_kiedy = $_POST['do_kiedy'];
+
+        // Dodawanie adresu
+        $addressInsert = $pdo->prepare("INSERT INTO adresy (miasto, ulica, numer, kod_pocztowy) VALUES (?, ?, ?, ?)");
+        $addressInsert->execute([$miasto, $ulica, $numer, $kod_pocztowy]);
+        $ID_adresu = $pdo->lastInsertId(); // Pobranie ID nowo dodanego adresu
+
+        // Dodawanie klienta
+        $clientInsert = $pdo->prepare("INSERT INTO klienci (pesel, ID_adresu, imie, nazwisko, od_kiedy_prawo_jazdy) VALUES (?, ?, ?, ?, ?)");
+        $clientInsert->execute([$pesel, $ID_adresu, $imie, $nazwisko, $prawo_jazdy_od]);
+        $ID_Klienta = $pdo->lastInsertId(); // Pobranie ID nowo dodanego klienta
+
+        // Dodawanie rezerwacji
+        $reservationInsert = $pdo->prepare("INSERT INTO rezerwacje (ID_pracownika, ID_pojazdu, ID_klienta, od_kiedy, do_kiedy, czy_zarezerwowany) VALUES (?, ?, ?, ?, ?, ?)");
+        $reservationInsert->execute([3,$ID_Pojazdu, $ID_Klienta, $od_kiedy, $do_kiedy, 1]);
+
+        echo json_encode(['message' => 'Rezerwacja zakończona sukcesem']);
+    }
+
     $type = isset($_GET['type']) ? $_GET['type'] : '';
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $startDay = isset($_GET['startDay']) ? $_GET['startDay'] : '';

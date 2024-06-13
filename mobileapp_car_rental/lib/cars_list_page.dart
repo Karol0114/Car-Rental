@@ -76,17 +76,18 @@ class CarsListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 var car = snapshot.data![index];
                 return CarWidget(
-                  name: car['marka'],
-                  model: car['model'],
-                  imageAsset: car['zdjecie'],
-                  year: car['rok_produkcji'],
-                  kmh: car['KM'],
-                  fuel: car['rodzaj_paliwa'],
-                  engine: double.parse(car['pojemnosc_silnika'].toString()),
-                  seats: int.parse(car['ilosc_siedzen'].toString()),
-                  doors: int.parse(car['ilosc_drzwi'].toString()),
-                  transmission: car['skrzynia_biegow'],
-                  price: double.parse(car['cena_za_dobe'].toString()),
+                   id: int.tryParse(car['ID_Pojazdu'].toString()) ?? 0,
+                    name: car['marka'],
+                    model: car['model'],
+                    imageAsset: car['zdjecie'],
+                    year: int.tryParse(car['rok_produkcji'].toString()) ?? 0,
+                    kmh: int.tryParse(car['KM'].toString()) ?? 0,
+                    fuel: car['rodzaj_paliwa'],
+                    engine: double.tryParse(car['pojemnosc_silnika'].toString()) ?? 0.0,
+                    seats: int.tryParse(car['ilosc_siedzen'].toString()) ?? 0,
+                    doors: int.tryParse(car['ilosc_drzwi'].toString()) ?? 0,
+                    transmission: car['skrzynia_biegow'],
+                    price: double.tryParse(car['cena_za_dobe'].toString()) ?? 0.0,
                 );
               },
             );

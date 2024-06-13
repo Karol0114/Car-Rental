@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobileapp_car_rental/ReservationFormScreen.dart';
 
 class CarWidget extends StatelessWidget {
+
   final String name;
   final String model;
   final String imageAsset;
@@ -12,6 +14,7 @@ class CarWidget extends StatelessWidget {
   final int doors;
   final String transmission;
   final double price;
+  final int id;
 
   const CarWidget({
     Key? key,
@@ -26,10 +29,20 @@ class CarWidget extends StatelessWidget {
     required this.doors,
     required this.transmission,
     required this.price,
+    required this.id
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    void _onReservePressed(int id) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ReservationForm(id: id,),
+        ),
+      );
+    }
     return Card(
       elevation: 5.0,
       margin: const EdgeInsets.all(8.0),
@@ -68,6 +81,11 @@ class CarWidget extends StatelessWidget {
                 color: Colors.green,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+
+            ElevatedButton(
+              onPressed: () => _onReservePressed(id),
+              child: Text('Rezerwuj'),
             ),
           ],
         ),
